@@ -156,6 +156,52 @@ public static void main(String args[]){
 		
 		return dados;
 	}
+
+/*********************************************************************************************/
+public boolean AlteraContaWiki(Usuario u,String user) {
+	System.out.println("......... Entrou Alterar usuario UsuarioDAO.............");
+	
+	Connection c = null;
+	PreparedStatement stmt = null;
+	
+	boolean retorno = false;
+	
+	
+	
+	try {
+
+		c = ConectaBDPostgres.getConexao();
+		String sql = "";
+		
+			System.out.println("......... vai Alterar usuario .............");
+					
+			sql = "update rf_user set nome =?, senha =?, email =?  "
+							+ " WHERE id =? and nome =?";
+	
+			
+			System.out.println("insere a instrução na string sql OK e vai executa");
+			
+			stmt = c.prepareStatement(sql);	
+			stmt.setString(1, u.getNome());
+			stmt.setString(2, u.getSenha());
+			stmt.setString(3, u.getEmail());
+			stmt.setLong(4, u.getId());
+			stmt.setString(5, user);
+		
+		stmt.execute();			
+		stmt.close();
+		retorno = true;
+		System.out.println("Executou OK");
+		
+	} catch (Exception e) {
+		System.out.println("Erro ao alterar");
+		e.printStackTrace();
+		return retorno;
+		
+	}	
+	
+	return retorno;
+}
 	
 /*********************************************************************************************/	
 	

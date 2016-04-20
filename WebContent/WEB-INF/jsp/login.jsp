@@ -13,7 +13,7 @@
 									  <input type="password" id="senha" name="senha" placeholder="Senha The Wiki">
 									 
 									 <button class="btn btn-default" type="submit" name="opcao">Logar <span class="glyphicon glyphicon-log-in"></span></button>
-									<!-- "src/br/wiki/controller/ServletMVC.java" -->
+									
 								</div>
                             </form>
                 		</div>
@@ -33,7 +33,7 @@
                 			
                 			<c:if test="${not empty cadNAOOK }">
                 			<h6 style="color:red"> 
-                			ERRO AO CADASTRAR, USUÁRIO JÁ EXISTE!
+                			ERRO AO CADASTRAR,<small> USUÁRIO JÁ EXISTE!</small>
                 			<span class="glyphicon glyphicon-warning-sign"> </span>
                 			</h6>
                 			</c:if>
@@ -43,6 +43,13 @@
                 			<span class="glyphicon glyphicon-alert"></span>
                 			Usuário ou Senha inválidos
                 			<a href="" data-toggle="modal" data-target="#myModal2"> <span class="glyphicon glyphicon-envelope"></span> Recuperar conta?</a>
+                			</h6>
+                			</c:if>
+                			
+                			<c:if test="${not empty alterOK }">
+                			<h6 style="color:green">
+                			<span class="glyphicon glyphicon-ok"> </span> 
+                			<small> USUÁRIO ALTERADO, entre com seu novo Login </small>
                 			</h6>
                 			</c:if>
                 		</div>
