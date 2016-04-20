@@ -7,11 +7,11 @@
                 			<img id="logo" class="img img-responsive" src="img/logo-wiki.png" style="max-width: 30%;"/>
                 		</div>
                 		<div class="col-md-5" style="margin-top: 1.333%;margin-bottom: 2.333%;">
-                			<form>
+                			<form action="#">
                                 <div class="input-group">
 									 <input type="text" class="form-control" placeholder="Pesquisar ...">
 									 <span class="input-group-btn">
-									 <button class="btn btn-default" type="submit">IR! <span class="glyphicon glyphicon-search"></span></button>
+									 <button class="btn btn-default" type="">IR! <span class="glyphicon glyphicon-search"></span></button>
 									</span>
 								</div>
                             </form>
@@ -22,11 +22,11 @@
                 				<div class="col-md-7">
                 					<h3 style="color:#22B14C;font-family:'Yanone Kaffeesatz',sans-serif">
                 						<span class="glyphicon glyphicon-user"></span>
-                						Olá ${usuario.nome}
+                						Olá ${usuarioLogado.nome} ${usuarioLogado.id}
                 					</h3>
                 				</div>
                 				<div class="col-md-5">
-                					<a href="/Wiki">
+                					<a href="mvc?Logica=DeslogarWiki">
                 						<h4 class="text-right" style="font-family:'Yanone Kaffeesatz',sans-serif">
 	                						<small>
 	                							Logout

@@ -4,6 +4,7 @@ import java.sql.SQLException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import br.model.dao.UsuarioDAO;
 import br.model.user.Usuario;
@@ -34,9 +35,12 @@ public class LogarWiki implements Logica{
 			if(retorno){
 				System.out.println("Retorna LOGADO");	
 				pagina = "/index.jsp";
-				rq.getSession().setAttribute("usuarioLogado", u);
-				rq.setAttribute("usuario", u);
-			//	rq.setAttribute("usuarios", ud.getUsuarios());
+				
+				Usuario dados = ud.InfoUsuario(u);
+				rq.getSession().setAttribute("usuarioLogado", dados); //cria sessão
+				
+				//rq.setAttribute("usuario", dados);
+				
 			}else{
 				System.out.println("Retorna NÃO LOGADO");
 				rq.setAttribute("msg", "Problemas ao logar");

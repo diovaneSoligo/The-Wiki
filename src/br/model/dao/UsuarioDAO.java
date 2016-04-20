@@ -47,6 +47,8 @@ public static void main(String args[]){
 		}
 	}
 */	
+	
+/*********************************************************************************************/	
 	public boolean autenticado(Usuario u) throws SQLException{
 		
 		boolean autenticado = false;
@@ -60,7 +62,8 @@ public static void main(String args[]){
 		
 		PreparedStatement stmtPre = c.prepareStatement(sql);
 		stmtPre.setString(1, u.getNome());
-		stmtPre.setString(2, u.getSenha());			
+		stmtPre.setString(2, u.getSenha());	
+		
 		//ResultSet rs = stmt.executeQuery(sql);
 		ResultSet rs = stmtPre.executeQuery();
 		
@@ -76,7 +79,8 @@ public static void main(String args[]){
 		return autenticado;
 	}
 	
-
+/*********************************************************************************************/	
+	
 	public boolean adiciona(Usuario t){
 		
 		Connection c = null;
@@ -123,6 +127,37 @@ public static void main(String args[]){
 		}	
 		return retorno;
 	}
+	
+/*********************************************************************************************/	
+	
+	public Usuario InfoUsuario(Usuario u) throws SQLException{
+		
+      Usuario dados = new Usuario();
+		
+		System.out.println("... dentro do InfoUsuario UsuarioDAO");	
+		
+		Connection c = ConectaBDPostgres.getConexao();//Faz conexão com banco thewiki
+
+		String sql = "select * from rf_user where "
+				+ "nome =? and senha =?";
+		
+		PreparedStatement stmtPre = c.prepareStatement(sql);
+		stmtPre.setString(1, u.getNome());
+		stmtPre.setString(2, u.getSenha());	
+		
+		ResultSet rs = stmtPre.executeQuery();
+		
+		while(rs.next()){
+			dados.setNome(rs.getString("nome"));
+			dados.setSenha(rs.getString("senha"));
+			dados.setEmail(rs.getString("email"));
+			dados.setId(rs.getLong("id"));
+		}
+		
+		return dados;
+	}
+	
+/*********************************************************************************************/	
 	
 /*	
 	public List<Usuario> getUsuarios(){

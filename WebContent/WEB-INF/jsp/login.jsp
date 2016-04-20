@@ -118,7 +118,7 @@
         <img id="logo" class="img img-responsive" src="img/logo-wiki2.png" style="max-width: 10%;margin-left: 45%;"/>
         Recuperar Conta The Wiki</h2>
       </div>
-       <form class="form-horizontal" role="form" style="margin-right: 20px;margin-top: 15px;">
+       <form action="#" method="post" class="form-horizontal" role="form" style="margin-right: 20px;margin-top: 15px;">
 		  <div class="form-group">
 		    <label class="control-label col-sm-2" for="email">E-mail:</label>
 		    <div class="col-sm-10">
